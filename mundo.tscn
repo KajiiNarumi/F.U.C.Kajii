@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://mundo.gd" type="Script" id=1]
+[ext_resource path="res://esperma.tscn" type="PackedScene" id=2]
+[ext_resource path="res://recursos/wp.png" type="Texture" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interfaz.tscn" type="PackedScene" id=5]
+[ext_resource path="res://recursos/audio/BabyL.ogg" type="AudioStream" id=6]
+[ext_resource path="res://recursos/audio/Bummin on Tremelo.ogg" type="AudioStream" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1.82447, 2.21292, 0, 0, 0, 0, 1025.61, 0.0544434, 0, 0, 0, 0, 1023.45, 597.951, 0, 0, 0, 0, -3.98294, 597.951, 0, 0, 0, 0, -1.82447, 2.21292 )
+}
+
+[node name="mundo" type="Node"]
+script = ExtResource( 1 )
+esperma = ExtResource( 2 )
+
+[node name="fondo" type="TextureRect" parent="."]
+margin_left = -43.9396
+margin_right = 1075.06
+margin_bottom = 600.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+pause_mode = 2
+position = Vector2( 510.02, 287.458 )
+
+[node name="espermatimer" type="Timer" parent="."]
+
+[node name="scoretimer" type="Timer" parent="."]
+
+[node name="iniciotimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="posiciondeinicio" type="Position2D" parent="."]
+position = Vector2( 512, 337 )
+
+[node name="camino" type="Path2D" parent="."]
+editor/display_folded = true
+curve = SubResource( 1 )
+
+[node name="espermaposicion" type="PathFollow2D" parent="camino"]
+position = Vector2( -1.82447, 2.21292 )
+rotation = -0.00210086
+
+[node name="interfaz" parent="." instance=ExtResource( 5 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -12.116
+pitch_scale = 1.7
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="golpe" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="espermatimer" to="." method="_on_espermatimer_timeout"]
+[connection signal="timeout" from="scoretimer" to="." method="_on_scoretimer_timeout"]
+[connection signal="timeout" from="iniciotimer" to="." method="_on_iniciotimer_timeout"]
+[connection signal="iniciar_juego" from="interfaz" to="." method="nuevo_juego"]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://interfaz.gd" type="Script" id=1]
+[ext_resource path="res://recursos/belisa_plumilla.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://recursos/audio/BabyL.ogg" type="AudioStream" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 43
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 89
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 38
+font_data = ExtResource( 2 )
+
+[node name="interfaz" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="scorelabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -39.0051
+margin_top = 4.91095
+margin_right = 11.9949
+margin_bottom = 63.9109
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+
+[node name="mensaje" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -416.5
+margin_top = 83.7279
+margin_right = 416.5
+margin_bottom = 389.728
+custom_fonts/font = SubResource( 2 )
+text = "F.U.C.K.	 
+by
+Kajii"
+align = 1
+valign = 1
+
+[node name="buttonplay" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -76.5
+margin_top = -79.0
+margin_right = 76.5
+custom_fonts/font = SubResource( 3 )
+text = "Play"
+
+[node name="mensajeTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="gameover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 521.133
+margin_top = 6.67649
+margin_right = 584.133
+margin_bottom = 50.6765
+custom_fonts/font = SubResource( 4 )
+text = "Hours"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="buttonplay" to="." method="_on_buttonplay_pressed"]
+[connection signal="timeout" from="mensajeTimer" to="." method="_on_mensajeTimer_timeout"]

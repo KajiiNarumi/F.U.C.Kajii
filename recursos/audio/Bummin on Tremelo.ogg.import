@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bummin on Tremelo.ogg-fb8958097af5e0b22f6a167b3e9634a1.oggstr"
+
+[deps]
+
+source_file="res://recursos/audio/Bummin on Tremelo.ogg"
+dest_files=[ "res://.import/Bummin on Tremelo.ogg-fb8958097af5e0b22f6a167b3e9634a1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

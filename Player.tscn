@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://recursos/sprite/d1.png" type="Texture" id=2]
+[ext_resource path="res://recursos/sprite/d2.png" type="Texture" id=3]
+[ext_resource path="res://recursos/sprite/l1.png" type="Texture" id=4]
+[ext_resource path="res://recursos/sprite/l2.png" type="Texture" id=5]
+[ext_resource path="res://recursos/sprite/p1.png" type="Texture" id=6]
+[ext_resource path="res://recursos/sprite/p2.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "abajo",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "lateral",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "frente",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 48.3496
+
+[node name="Player" type="Area2D"]
+position = Vector2( 530.664, 294.824 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+Velocidad = 550
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 1 )
+animation = "frente"
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.857376, 8.21836 )
+shape = SubResource( 2 )
+one_way_collision = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]

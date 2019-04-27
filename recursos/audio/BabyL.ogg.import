@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BabyL.ogg-e0762eeedd93b0eecdaa2730d82d46f8.oggstr"
+
+[deps]
+
+source_file="res://recursos/audio/BabyL.ogg"
+dest_files=[ "res://.import/BabyL.ogg-e0762eeedd93b0eecdaa2730d82d46f8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
